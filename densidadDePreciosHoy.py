@@ -9,8 +9,10 @@ prices = []
 with open(file_path, newline='') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
-        price = float(row['price'].replace('$', '').replace('.', ''))
-        prices.append(price)
+        price_str = row['price'].replace('$', '').replace('.', '')
+        if price_str:
+            price = float(price_str)
+            prices.append(price)
 
 # Calcular la diferencia entre el precio más alto y el precio más bajo
 max_price = max(prices)
@@ -31,13 +33,15 @@ contadores = {}
 with open(file_path, newline='') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
-        precio = float(row['price'].replace('$', '').replace('.', ''))
-        for i in range(1, 101):
-            if lower_limit * i < precio < upper_limit * i:
-                if i not in contadores:
-                    contadores[i] = 1
-                else:
-                    contadores[i] += 1
+        precio_str = row['price'].replace('$', '').replace('.', '')
+        if precio_str:
+            precio = float(precio_str)
+            for i in range(1, 101):
+                if lower_limit * i < precio < upper_limit * i:
+                    if i not in contadores:
+                        contadores[i] = 1
+                    else:
+                        contadores[i] += 1
 
 # Crear una lista de valores y etiquetas para el gráfico
 valores = list(contadores.values())

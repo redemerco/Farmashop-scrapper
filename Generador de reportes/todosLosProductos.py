@@ -15,7 +15,7 @@ for archivo in os.listdir(directorio):
         ruta_archivo = os.path.join(directorio, archivo)
         
         # Leer el archivo CSV y agregar los datos a la lista
-        datos_csv = pd.read_csv(ruta_archivo)
+        datos_csv = pd.read_csv(ruta_archivo, dtype=str)  # Establecer el tipo de dato de todas las columnas como str
         datos_totales.append(datos_csv)
 
 # Combinar los datos de todos los archivos en un único DataFrame

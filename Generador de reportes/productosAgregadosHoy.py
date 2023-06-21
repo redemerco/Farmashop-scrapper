@@ -65,7 +65,7 @@ for sku in skus_novedades:
 
 # Eliminar filas vacías del DataFrame
 df_novedades.dropna(subset=["sku", "nombre", "precio"], how='all', inplace=True)
-
+realdf= df_novedades.drop_duplicates(subset='sku')
 # Guardar el DataFrame en un archivo CSV
-df_novedades.to_csv("C:/Repo Prueba/Fshop/productosAgregadosHoy.csv", index=False)
-print("Reporte de productos agregados hoy emitido correctamente!")
+realdf.to_csv("C:/Repo Prueba/Fshop/productosAgregadosHoy.csv", index=False)
+print("Se ha generado el archivo 'productosAgregadosHoy.csv' sin duplicados y se ha movido a la ruta 'C:\Repo Prueba\Fshop'")

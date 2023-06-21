@@ -18,15 +18,11 @@ for archivo in os.listdir(directorio):
         datos_csv = pd.read_csv(ruta_archivo, dtype=str)  # Establecer el tipo de dato de todas las columnas como str
         datos_totales.append(datos_csv)
 
-# Combinar los datos de todos los archivos en un único DataFrame
-datos_combinados = pd.concat(datos_totales, ignore_index=True)
+# Combinar los datos de todos los archivos en un único DataFrame y eliminar los duplicados
+datos_combinados = pd.concat(datos_totales, ignore_index=True).drop_duplicates(subset="sku")
 
-# Eliminar duplicados basados en la columna 'sku'
-datos_combinados_sin_duplicados = datos_combinados.drop_duplicates(subset='sku')
-
-# Guardar los datos sin duplicados en un nuevo archivo CSV
 ruta_salida = os.path.join(directorio, "todosLosProductos.csv")
-datos_combinados_sin_duplicados.to_csv(ruta_salida, index=False)
+datos_combinados.to_csv(ruta_salida, index=False)
 
 # Mover el archivo a la nueva ubicación
 ruta_destino = "C:\\Repo Prueba\\Fshop\\todosLosProductos.csv"

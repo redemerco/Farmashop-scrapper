@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 import subprocess
 
 def ejecutar_script(script_path):
@@ -7,6 +8,10 @@ def ejecutar_script(script_path):
 # Crear la ventana principal
 ventana = tk.Tk()
 ventana.title("Ejecutar Scripts")
+
+# Crear el estilo
+style = ttk.Style()
+style.configure('TButton', font=('Arial', 12), padding=10)
 
 # Funciones para ejecutar los scripts
 def ejecutar_densidad_de_precios_hoy():
@@ -33,13 +38,13 @@ def ejecutar_fvck_farmashop():
     script_path = r"C:\Repo Prueba\Fshop\fvckFarmashop.py"
     ejecutar_script(script_path)
 
-# Crear los botones
-boton_densidad_de_precios_hoy = tk.Button(ventana, text="Densidad de Precios Hoy", command=ejecutar_densidad_de_precios_hoy)
-boton_evolucion_precio_medio = tk.Button(ventana, text="Evolución Precio Medio", command=ejecutar_evolucion_precio_medio)
-boton_evolucion_precio_producto = tk.Button(ventana, text="Evolución Precio Producto", command=ejecutar_evolucion_precio_producto)
-boton_productos_agregados_hoy = tk.Button(ventana, text="Productos Agregados Hoy", command=ejecutar_productos_agregados_hoy)
-boton_todos_los_productos = tk.Button(ventana, text="Todos los Productos", command=ejecutar_todos_los_productos)
-boton_fvck_farmashop = tk.Button(ventana, text="Scrappear productos", command=ejecutar_fvck_farmashop)
+# Crear los botones con estilo
+boton_densidad_de_precios_hoy = ttk.Button(ventana, text="Densidad de Precios Hoy", command=ejecutar_densidad_de_precios_hoy)
+boton_evolucion_precio_medio = ttk.Button(ventana, text="Evolución Precio Medio", command=ejecutar_evolucion_precio_medio)
+boton_evolucion_precio_producto = ttk.Button(ventana, text="Evolución Precio Producto", command=ejecutar_evolucion_precio_producto)
+boton_productos_agregados_hoy = ttk.Button(ventana, text="Productos Agregados Hoy", command=ejecutar_productos_agregados_hoy)
+boton_todos_los_productos = ttk.Button(ventana, text="Todos los Productos", command=ejecutar_todos_los_productos)
+boton_fvck_farmashop = ttk.Button(ventana, text="Scrappear productos", command=ejecutar_fvck_farmashop)
 
 # Colocar los botones en la ventana
 boton_densidad_de_precios_hoy.pack(pady=10)

@@ -7,7 +7,7 @@ def ejecutar_script(script_path):
 
 # Crear la ventana principal
 ventana = tk.Tk()
-ventana.title("Ejecutar Scripts")
+ventana.title("Farmashop Scrapper")
 
 # Crear el estilo
 style = ttk.Style()

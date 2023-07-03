@@ -7,6 +7,7 @@ import csv
 from tqdm import tqdm
 import datetime
 import os
+
 def get_product_data(response, main_url):
     product_data = {}
     soup = BeautifulSoup(response.content, "html.parser")
@@ -27,12 +28,14 @@ def get_product_data(response, main_url):
         product_data['price'] = ""
     product_data['main_url'] = main_url
     return product_data
+
 def get_product_urls(response):
     soup = BeautifulSoup(response.content, "html.parser")
     product_urls = []
     for i in soup.find_all('a', class_="product-item-link", href=True):
         product_urls.append(i['href'])
     return product_urls
+
 def get_main_urls(response):
     soup = BeautifulSoup(response.content, "html.parser")
     main_urls = []
@@ -40,6 +43,7 @@ def get_main_urls(response):
         main_urls.append(i['href'].replace("#", "https://tienda.farmashop.com.uy/"))
         main_urls =list(dict.fromkeys(main_urls))
     return main_urls
+
 def scrape_website(url):
     product_urls = []
     session = FuturesSession()
@@ -61,6 +65,7 @@ def scrape_website(url):
             print('generated an exception: %s' % exc)
     df = pd.DataFrame(products_data, columns=['sku', 'name', 'price'])
     df.to_csv('variable.csv', index=False)
+    
 scrape_website("https://tienda.farmashop.com.uy/")
 archivo_1 = "fijo.csv"
 archivo_2 = "variable.csv"

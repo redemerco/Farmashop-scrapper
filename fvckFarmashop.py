@@ -85,7 +85,7 @@ with open(archivo_1, "r", encoding='utf-8') as f1, open(archivo_2, "r", encoding
         if precio_2 == "Sin datos":
             continue  # skip writing if precio_2 is "Sin datos"
         if precio_1 != precio_2 and sku not in skus_escritos:
-            escritor.writerow([sku, precio_1, precio_2])
+            escritor.writerow([sku, precio_1, precio_2]) 
             skus_escritos.add(sku)  # añadir el SKU a la lista de SKUs escritos, 
 fecha_actual = datetime.datetime.now().strftime('%d-%m-%Y')
 nombre_archivo_actual = 'fijo.csv'
